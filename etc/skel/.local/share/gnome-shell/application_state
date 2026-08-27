@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<application-state>
+  <context id="">
+    <application id="org.gnome.Nautilus.desktop" score="527" last-seen="1787731138"/>
+    <application id="org.gnome.tweaks.desktop" score="48" last-seen="1787127159"/>
+      <application id="org.gnome.Terminal.desktop" score="555" last-seen="1787128615"/>
+    <application id="user-dirs-update-gtk.desktop" score="1" last-seen="1787730323"/>
+    <application id="org.gnome.TextEditor.desktop" score="3" last-seen="1787731138"/>
+  </context>
+</application-state>

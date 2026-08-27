@@ -1,0 +1,17 @@
+[Desktop Entry]
+Comment[en_NG]=
+Comment=
+Exec=/usr/share/infinity/Scripts/autostart.sh
+GenericName[en_NG]=
+GenericName=
+MimeType=
+Name[en_NG]=first_start
+Name=first_start
+Path=
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+X-GNOME-Autostart-enabled=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=

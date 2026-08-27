@@ -1,0 +1,1 @@
+/home/live/.local/share/gnome-shell/extensions/add-to-steam@pupper.space/add-to-steam.py

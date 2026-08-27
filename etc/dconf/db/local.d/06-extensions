@@ -1,0 +1,102 @@
+[org/gnome/shell]
+enabled-extensions=['arch-update@RaphaelRochet', 'blur-my-shell@aunetx', 'dash-to-dock@micxgx.gmail.com', 'gsconnect@andyholmes.github.io', 'add-to-desktop@tommimon.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'add-to-steam@pupper.space', 'appindicatorsupport@rgcjonas.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'auto-accent-colour@Wartybix', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'compiz-alike-magic-lamp-effect@hermes83.github.com', 'compiz-windows-effect@hermes83.github.com', 'CustomizeClockOnLockScreen@pratap.fastmail.fm', 'custom-osd@neuromorph', 'ddterm@amezin.github.com', 'desktop-cube@schneegans.github.com', 'ding@rastersoft.com', 'gnome-ui-tune@itstime.tech', 'just-perfection-desktop@just-perfection', 'kiwimenu@kemma', 'lock-guard@fthx', 'lockscreen-extension@pratap.fastmail.fm', 'netspeedsimplified@prateekmedia.extension', 'openbar@neuromorph', 'restartto@tiagoporsch.github.io', 'space-bar@luchrioh', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'user-themegnome-shell-extensions.gcampax.github.com.v59.shell-extension', 'Vitals@CoreCoding.com']
+disabled-extensions=['arcmenu@arcmenu.com', 'trayIconsReloaded@selfmade.pl']
+disable-extension-version-validation=true
+disable-user-extensions=false
+
+[org/gnome/shell/extensions/blur-my-shell/panel]
+force-light-text=true
+
+[org/gnome/shell/extensions/arcmenu]
+application-shortcuts=[{'name': 'Software', 'icon': 'org.gnome.Software', 'id': 'ArcMenu_Software'}, {'name': 'Settings', 'icon': 'org.gnome.Settings', 'id': 'org.gnome.Settings.desktop'}, {'name': 'Tweaks', 'icon': 'org.gnome.tweaks', 'id': 'org.gnome.tweaks.desktop'}, {'name': 'Terminal', 'icon': 'org.gnome.Terminal', 'id': 'org.gnome.Terminal.desktop'}, {'name': 'Activities Overview', 'icon': 'view-fullscreen-symbolic', 'id': 'ArcMenu_ActivitiesOverview'}, {'name': 'Extension Manager', 'icon': 'com.mattjakeman.ExtensionManager', 'id': 'com.mattjakeman.ExtensionManager.desktop'}]
+application-shortcuts-list=@aas []
+button-item-icon-size='Small'
+custom-menu-button-icon-size=23.0
+disable-recently-installed-apps=true
+distro-icon=6
+extra-categories=[(0, true), (1, true), (2, true), (3, true), (4, false)]
+menu-background-color='#262830'
+menu-border-color='rgb(60,60,60)'
+menu-button-active-fg-color=(true, 'rgb(26,95,180)')
+menu-button-appearance='Icon'
+menu-button-border-radius=(true, 25)
+menu-button-fg-color=(false, 'rgb(26,95,180)')
+menu-button-icon='Distro_Icon'
+menu-button-position-offset=0
+menu-foreground-color='#e0e0e8'
+menu-item-active-bg-color='#004397'
+menu-item-active-fg-color=' #d6e2ff'
+menu-item-grid-icon-size='Medium'
+menu-item-hover-bg-color=' #004397'
+menu-item-hover-fg-color=' #d6e2ff'
+menu-layout='Raven'
+menu-separator-color='rgba(255,255,255,0.1)'
+override-menu-theme=true
+pinned-app-list=@as []
+pinned-apps=[{'name': 'Firefox', 'id': 'firefox.desktop'}, {'name': 'Files', 'id': 'org.gnome.Nautilus.desktop'}, {'name': 'Nyarch Customize', 'id': 'moe.nyarchlinux.customize.desktop'}, {'name': 'Nyarch Tour', 'id': 'moe.nyarchlinux.tour.desktop'}, {'name': 'Nyarch Wizard', 'id': 'moe.nyarchlinux.wizard.desktop'}, {'name': 'Nyarch Scripts', 'id': 'moe.nyarchlinux.scripts.desktop'}]
+prefs-visible-page=0
+recently-installed-apps=['appimagekit_75fbd7d7fd2bfaf1c426bf2adb037d19-balenaEtcher.desktop']
+search-entry-border-radius=(true, 25)
+shortcut-icon-type='Full_Color'
+
+[org/gnome/shell/extensions/dash-to-panel]
+animate-appicon-hover=false
+animate-appicon-hover-animation-extent={'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}
+animate-appicon-hover-animation-type='PLANK'
+appicon-margin=8
+appicon-padding=4
+available-monitors=[0]
+dot-position='BOTTOM'
+hotkeys-overlay-combo='TEMPORARILY'
+isolate-workspaces=true
+leftbox-padding=-1
+panel-anchors='{"0":"MIDDLE"}'
+panel-element-positions='{"0":[{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'
+panel-lengths='{"0":100}'
+panel-sizes='{"0":48}'
+primary-monitor=0
+status-icon-padding=-1
+stockgs-keep-dash=false
+stockgs-keep-top-panel=false
+stockgs-panelbtn-click-only=false
+trans-panel-opacity=0.20000000000000001
+trans-use-custom-gradient=false
+trans-use-custom-opacity=true
+trans-use-dynamic-opacity=true
+tray-padding=-1
+window-preview-title-position='TOP'
+
+[org/gnome/shell/extensions/user-theme]
+name='MaterialYou'
+
+[org/gnome/shell/extensions/material-you-colors]
+accent-color='4282549748'
+arcmenu-theming=true
+enable-accent-colors=false
+enable-pywal-theming=true
+extra-command='bash ~/.config/nyarch/after_wp_change.sh &'
+resize-height=200
+resize-width=200
+scheme='Default'
+python-backend=true
+
+[org/fedorahosted/background-logo-extension]
+logo-always-visible=true
+logo-border=uint32 46
+logo-file='/etc/skel/.config/fastfetch/infinity2.png'
+logo-file-dark='/etc/skel/.config/neofetch/infinity3.png'
+logo-position='bottom-right'
+logo-opacity=uint32 137
+logo-size=10.485232067510548
+
+[org/gnome/shell/extensions/dash-to-dock]
+background-color='rgb(198,70,0)'
+background-opacity=0.80000000000000004
+custom-background-color=false
+dash-max-icon-size=48
+dock-position='BOTTOM'
+height-fraction=0.90000000000000002
+max-alpha=0.80000000000000004
+preferred-monitor=-2
+preferred-monitor-by-connector='Virtual-1'
+transparency-mode='DYNAMIC'

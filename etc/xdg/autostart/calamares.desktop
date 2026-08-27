@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[en_NG]=
+Comment=
+Exec=calamares
+GenericName[en_NG]=
+GenericName=
+MimeType=
+Name[en_NG]=Calamares Installer
+Name=Calamares Installer
+OnlyShowIn=KDE;
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-KDE-AutostartScript=false
+X-KDE-SubstituteUID=false
+X-KDE-Username=

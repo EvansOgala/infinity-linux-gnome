@@ -1,0 +1,10 @@
+[Unit]
+Description=ZRAM Autoconfig
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/zram.sh
+
+[Install]
+WantedBy=multi-user.target
+

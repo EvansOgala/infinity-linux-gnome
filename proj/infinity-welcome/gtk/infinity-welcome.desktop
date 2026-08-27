@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Infinity Welcome
+Exec=infinity-welcome
+Icon=infinity
+Categories=System;
+StartupNotify=true

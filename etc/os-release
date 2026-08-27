@@ -1,0 +1,10 @@
+NAME="Infinity Linux 2026.6 (Infinite Void)"
+PRETTY_NAME="Infinity Linux"
+ID=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://evansogala.github.io"
+SUPPORT_URL="https://github.com/EvansOgala"
+BUG_REPORT_URL="https://github.com/EvansOgala"
+IMAGE_ID=infinite-void
+IMAGE_VERSION=20260612
