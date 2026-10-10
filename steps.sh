@@ -120,7 +120,7 @@ cp -r etc/ ./ezreleng/airootfs/
 cp -r opt/ ./ezreleng/airootfs/
 cp -r usr/ ./ezreleng/airootfs/
 mkdir -p ./ezreleng/airootfs/etc/skel
-ln -sf /usr/share/ezarcher ./ezreleng/airootfs/etc/skel/ezarcher
+ln -sf /usr/share/infinity ./ezreleng/airootfs/etc/skel/ezarcher
 }
 
 # Set hostname
@@ -217,6 +217,7 @@ crtshadow
 crtgshadow
 runmkarchiso
 rmezrepo
+
 
 
 # Disclaimer:
