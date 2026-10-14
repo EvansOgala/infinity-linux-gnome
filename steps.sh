@@ -113,6 +113,7 @@ cp pacman.conf ./ezreleng/
 cp profiledef.sh ./ezreleng/
 cp packages.x86_64 ./ezreleng/
 cp customize_airootfs.sh ./ezreleng/airootfs/root
+cp inf2 ./ezreleng/airootfs/
 cp -r grub/ ./ezreleng/
 cp -r efiboot/ ./ezreleng/
 cp -r syslinux/ ./ezreleng/
@@ -120,7 +121,7 @@ cp -r etc/ ./ezreleng/airootfs/
 cp -r opt/ ./ezreleng/airootfs/
 cp -r usr/ ./ezreleng/airootfs/
 mkdir -p ./ezreleng/airootfs/etc/skel
-ln -sf /usr/share/ezarcher ./ezreleng/airootfs/etc/skel/ezarcher
+ln -sf /usr/share/infinity ./ezreleng/airootfs/etc/skel/ezarcher
 }
 
 # Set hostname
@@ -217,6 +218,7 @@ crtshadow
 crtgshadow
 runmkarchiso
 rmezrepo
+
 
 
 # Disclaimer:

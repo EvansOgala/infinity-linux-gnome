@@ -5,7 +5,6 @@
 alsa-utils
 amd-ucode
 apparmor
-app-hub-git
 arch-install-scripts
 archinstall
 audit
@@ -23,7 +22,6 @@ darkhttpd
 ddrescue
 dhcpcd
 diffutils
-disk-health-monitor-git
 dmidecode
 dmraid
 dnsmasq
@@ -370,6 +368,7 @@ ttf-croscore
 ttf-carlito
 ttf-caladea
 noto-fonts
+noto-fonts-cjk
 opendesktop-fonts
 ttf-opensans
 freetype2
@@ -392,19 +391,17 @@ system-config-printer
 
 # KDE
 accountsservice
-aisleriot
 archlinux-appstream-data
-ark
+file-roller
 audiocd-kio
 bluedevil
 fastfetch
 geany
-gnumeric
 guvcview
 gwenview
-k3b
-kcalc
-kate
+gnome-calculator
+gnome-text-editor
+gnome-photos
 libvlc
 meld
 okular
@@ -414,7 +411,6 @@ phonon-qt6-vlc
 powerdevil
 print-manager
 qbittorrent
-smplayer
 spectacle
 sweeper
 xsettingsd
@@ -485,12 +481,8 @@ slurp
 kitty
 pavucontrol
 playerctl
-fzf
-fzf-tab-git
-c-lolcat
 lib32-spirv-tools
 lib32-vulkan-icd-loader
-cwal-git
 #infinity-branding
 #infinity-calamares
 #infinity-defaults
@@ -500,12 +492,8 @@ gnome
 flatseal
 extension-manager
 komikku
-file-explorer-git
-fighter-1
-linux-ops-center-git
-mini-os-helper-git
-ops-console-git
-python-browser-git
-weather-dashboard-git
+gnome-terminal-transparency
 bazaar
 infinity-gnome
+breeze-cursors
+adwaita-icon-theme
