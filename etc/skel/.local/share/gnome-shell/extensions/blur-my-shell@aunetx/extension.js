@@ -21,6 +21,8 @@ import { WindowListBlur } from './components/window_list.js';
 import { CoverflowAltTabBlur } from './components/coverflow_alt_tab.js';
 import { ApplicationsBlur } from './components/applications.js';
 import { ScreenshotBlur } from './components/screenshot.js';
+import { PopupBlur } from './components/popup.js';
+import { NativeDynamicBlurEffect } from './effects/native_dynamic_gaussian_blur.js';
 
 
 /// The main extension class, created when the GNOME Shell is loaded.
@@ -72,6 +74,7 @@ export default class BlurMyShell extends Extension {
         this._coverflow_alt_tab_blur = new CoverflowAltTabBlur(...init());
         this._applications_blur = new ApplicationsBlur(...init());
         this._screenshot_blur = new ScreenshotBlur(...init());
+        this._popup = new PopupBlur(...init());
 
         // connect each component to preferences change
         this._connect_to_settings();
@@ -79,6 +82,9 @@ export default class BlurMyShell extends Extension {
         // enable the lockscreen blur, only one important in both `user` session and `unlock-dialog`
         if (this._settings.lockscreen.BLUR && !this._lockscreen_blur.enabled)
             this._lockscreen_blur.enable();
+
+        // update whether or not the active blur effect supports rounded corners
+        this._update_rounded_blur_found();
 
         // ensure we take the correct action for the current session mode
         this._user_session_mode_enabled = false;
@@ -111,28 +117,14 @@ export default class BlurMyShell extends Extension {
 
         // try to enable the components as soon as possible anyway, this way the
         // overview may load before the user sees it
-        try {
-            if (this._settings.overview.BLUR && !this._overview_blur.enabled)
-                this._overview_blur.enable();
-        } catch (e) {
-            this._log("Could not enable overview blur directly");
-            this._log(e);
-        }
-        try {
-            if (this._settings.dash_to_dock.BLUR
-                && !this._dash_to_dock_blur.enabled)
-                this._dash_to_dock_blur.enable();
-        } catch (e) {
-            this._log("Could not enable dash-to-dock blur directly");
-            this._log(e);
-        }
-        try {
-            if (this._settings.panel.BLUR && !this._panel_blur.enabled)
-                this._panel_blur.enable();
-        } catch (e) {
-            this._log("Could not enable panel blur directly");
-            this._log(e);
-        }
+        if (this._settings.overview.BLUR && !this._overview_blur.enabled)
+            this._overview_blur.enable();
+
+        if (this._settings.dash_to_dock.BLUR && !this._dash_to_dock_blur.enabled)
+            this._dash_to_dock_blur.enable();
+
+        if (this._settings.panel.BLUR && !this._panel_blur.enabled)
+            this._panel_blur.enable();
 
         // tells the extension we have enabled the user session components, so that we do not
         // disable them later if they were not even enabled to begin with
@@ -160,7 +152,8 @@ export default class BlurMyShell extends Extension {
             this._disable_user_session();
         this._overview_blur.restore_patched_proto();
 
-        // disable lockscreen blur too
+        // disable components that stay active outside the user session
+        this._popup.disable();
         this._lockscreen_blur.disable();
 
         // untrack them
@@ -173,6 +166,12 @@ export default class BlurMyShell extends Extension {
         this._coverflow_alt_tab_blur = null;
         this._applications_blur = null;
         this._screenshot_blur = null;
+        this._popup = null;
+
+        this._effects_manager.destroy_all();
+        this._pipelines_manager.destroy();
+        this._effects_manager = null;
+        this._pipelines_manager = null;
 
         // make sure no settings change can re-enable them
         this._settings.disconnect_all_settings();
@@ -198,7 +197,7 @@ export default class BlurMyShell extends Extension {
     _disable_user_session() {
         this._log("disabling user session mode...");
 
-        // disable every component except lockscreen blur
+        // disable every component except lockscreen blur and popup blur
         this._panel_blur.disable();
         this._dash_to_dock_blur.disable();
         this._overview_blur.disable();
@@ -238,6 +237,17 @@ export default class BlurMyShell extends Extension {
             if (this._user_session_mode_enabled)
                 // we need to disable the components related to the user session mode
                 this._disable_user_session();
+        }
+    }
+
+    /// Verify whether the active native blur effect supports rounded corners.
+    _update_rounded_blur_found() {
+        if (!NativeDynamicBlurEffect.supports_corner_radius) {
+            this._settings.ROUNDED_BLUR_FOUND = false;
+            this._log("using original implementation for the native blur effect")
+        } else {
+            this._settings.ROUNDED_BLUR_FOUND = true;
+            this._log("using native rounded corners for the blur effect")
         }
     }
 
@@ -306,6 +316,9 @@ export default class BlurMyShell extends Extension {
 
         if (this._settings.screenshot.BLUR)
             this._screenshot_blur.enable();
+
+        if (this._settings.popup.BLUR)
+            this._popup.enable();
 
         this._log("all components enabled.");
     }
@@ -408,8 +421,10 @@ export default class BlurMyShell extends Extension {
 
         // panel override background toggled on/off
         this._settings.panel.OVERRIDE_BACKGROUND_changed(() => {
-            if (this._settings.panel.BLUR)
+            if (this._settings.panel.BLUR) {
                 this._panel_blur.connect_to_windows_and_overview();
+                this._panel_blur.reset();
+            }
         });
 
         // panel style changed
@@ -420,10 +435,30 @@ export default class BlurMyShell extends Extension {
 
         // panel background's dynamic overriding toggled on/off
         this._settings.panel.OVERRIDE_BACKGROUND_DYNAMICALLY_changed(() => {
-            if (this._settings.panel.BLUR)
+            if (this._settings.panel.BLUR) {
                 this._panel_blur.connect_to_windows_and_overview();
+                this._panel_blur.reset();
+            }
         });
 
+        this._settings.panel.OVERRIDE_BACKGROUND_DYNAMICALLY_MODE_changed(() => {
+            if (this._settings.panel.BLUR) {
+                this._panel_blur.connect_to_windows_and_overview();
+                this._panel_blur.reset();
+            }
+        });
+
+        this._settings.panel.GRADIENT_PANEL_changed(() => {
+            if (this._settings.panel.BLUR) {
+                this._panel_blur.update_visibility() ;
+            }
+        });
+
+        this._settings.panel.GRADIENT_PANEL_MODE_changed(() => {
+            if (this._settings.panel.BLUR) {
+                this._panel_blur.update_visibility();
+            }
+        });
 
         // ---------- DASH TO DOCK ----------
 
@@ -488,6 +523,12 @@ export default class BlurMyShell extends Extension {
                 this._applications_blur.change_pipeline();
         });
 
+        // rounded corners on maximized windows changed
+        this._settings.applications.CORNER_WHEN_MAXIMIZED_changed(() => {
+            if (this._settings.applications.BLUR)
+                this._applications_blur.update_all_corner_radii();
+        });
+
         // application opacity changed
         this._settings.applications.OPACITY_changed(() => {
             if (this._settings.applications.BLUR)
@@ -506,6 +547,12 @@ export default class BlurMyShell extends Extension {
         this._settings.applications.BLUR_ON_OVERVIEW_changed(() => {
             if (this._settings.applications.BLUR)
                 this._applications_blur.connect_to_overview();
+        });
+
+        // application unblur-when-fullscreen changed
+        this._settings.applications.UNBLUR_WHEN_FULLSCREEN_changed(() => {
+            if (this._settings.applications.BLUR)
+                this._applications_blur.update_fullscreen_status();
         });
 
         // application enable-all changed
@@ -604,6 +651,46 @@ export default class BlurMyShell extends Extension {
         this._settings.screenshot.PIPELINE_changed(() => {
             if (this._settings.screenshot.BLUR)
                 this._screenshot_blur.update_pipeline();
+        });
+
+
+        // ---------- POPUP BLUR ----------
+
+        // toggled on/off
+        this._settings.popup.BLUR_changed(() => {
+            if (this._settings.popup.BLUR)
+                this._popup.enable();
+            else
+                this._popup.disable();
+        });
+
+        this._settings.popup.STATIC_BLUR_changed(() => {
+            if (this._settings.popup.BLUR)
+                this._popup.reset();
+        });
+
+        this._settings.popup.PIPELINE_changed(() => {
+            if (this._settings.popup.BLUR)
+                this._popup.update_pipeline();
+        });
+
+        // popup background override toggled on/off
+        this._settings.popup.OVERRIDE_BACKGROUND_changed(() => {
+            if (this._settings.popup.BLUR)
+                this._popup.update_background();
+        });
+
+        // Apply only the popup surface override, leaving shell theme control
+        // and text styles intact.
+        this._settings.popup.PRESERVE_SHELL_THEME_changed(() => {
+            if (this._settings.popup.BLUR)
+                this._popup.update_background();
+        });
+
+        // popup background style changed
+        this._settings.popup.STYLE_POPUP_changed(() => {
+            if (this._settings.popup.BLUR)
+                this._popup.update_background();
         });
     }
 

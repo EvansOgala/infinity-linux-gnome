@@ -399,14 +399,11 @@ fastfetch
 geany
 guvcview
 gwenview
-<<<<<<< HEAD
 gnome-calculator
 gnome-text-editor
 gnome-photos
-=======
 kcalc
 kate
->>>>>>> 276cf96f637934568d575409ea3bed2624492980
 libvlc
 meld
 okular

@@ -37,9 +37,15 @@ export const Applications = GObject.registerClass({
         'sigma',
         'brightness_row',
         'brightness',
+        'corner_radius_not_found_row',
+        'corner_radius_row',
+        'corner_radius',
+        'corner_when_maximized_row',
+        'corner_when_maximized',
         'opacity',
         'dynamic_opacity',
         'blur_on_overview',
+        'unblur_when_fullscreen',
         'enable_all',
         'whitelist',
         'add_window_whitelist',
@@ -86,6 +92,10 @@ export const Applications = GObject.registerClass({
             Gio.SettingsBindFlags.DEFAULT
         );
         this.preferences.applications.settings.bind(
+            'unblur-when-fullscreen', this._unblur_when_fullscreen, 'active',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        this.preferences.applications.settings.bind(
             'enable-all', this._enable_all, 'active',
             Gio.SettingsBindFlags.DEFAULT
         );
@@ -95,6 +105,14 @@ export const Applications = GObject.registerClass({
         );
         this.preferences.applications.settings.bind(
             'brightness', this._brightness, 'value',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        this.preferences.applications.settings.bind(
+            'corner-radius', this._corner_radius, 'value',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+        this.preferences.applications.settings.bind(
+            'corner-when-maximized', this._corner_when_maximized, 'active',
             Gio.SettingsBindFlags.DEFAULT
         );
 
@@ -213,5 +231,9 @@ export const Applications = GObject.registerClass({
         this._pipeline_choose_row.set_visible(is_static_blur);
         this._sigma_row.set_visible(!is_static_blur);
         this._brightness_row.set_visible(!is_static_blur);
+        this._corner_radius_row.set_visible(!is_static_blur);
+        this._corner_radius_row.set_visible(!is_static_blur && this.preferences.ROUNDED_BLUR_FOUND);
+        //this._corner_when_maximized_row.set_visible(!is_static_blur && this.preferences.ROUNDED_BLUR_FOUND);
+        this._corner_radius_not_found_row.set_visible(!is_static_blur && !this.preferences.ROUNDED_BLUR_FOUND);
     }
 });

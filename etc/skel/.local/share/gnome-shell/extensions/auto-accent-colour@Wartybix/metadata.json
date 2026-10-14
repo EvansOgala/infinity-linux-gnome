@@ -8,11 +8,11 @@
   "name": "Auto Accent Colour",
   "settings-schema": "org.gnome.shell.extensions.auto-accent-colour",
   "shell-version": [
-    "48",
     "49",
-    "50"
+    "50",
+    "51"
   ],
   "url": "https://codeberg.org/Wartybix/GNOME-Auto-Accent-Colour/",
   "uuid": "auto-accent-colour@Wartybix",
-  "version": 20
+  "version": 21
 }

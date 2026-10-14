@@ -1,5 +1,5 @@
 [org/gnome/shell]
-enabled-extensions=['arch-update@RaphaelRochet', 'blur-my-shell@aunetx', 'dash-to-dock@micxgx.gmail.com', 'gsconnect@andyholmes.github.io', 'add-to-desktop@tommimon.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'add-to-steam@pupper.space', 'appindicatorsupport@rgcjonas.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'auto-accent-colour@Wartybix', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'compiz-alike-magic-lamp-effect@hermes83.github.com', 'compiz-windows-effect@hermes83.github.com', 'CustomizeClockOnLockScreen@pratap.fastmail.fm', 'custom-osd@neuromorph', 'desktop-cube@schneegans.github.com', 'ding@rastersoft.com', 'gnome-ui-tune@itstime.tech', 'just-perfection-desktop@just-perfection', 'kiwimenu@kemma', 'lock-guard@fthx', 'lockscreen-extension@pratap.fastmail.fm', 'netspeedsimplified@prateekmedia.extension', 'openbar@neuromorph', 'restartto@tiagoporsch.github.io', 'space-bar@luchrioh', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'user-themegnome-shell-extensions.gcampax.github.com.v59.shell-extension', 'Vitals@CoreCoding.com']
+enabled-extensions=['arch-update@RaphaelRochet', 'blur-my-shell@aunetx', 'dash-to-dock@micxgx.gmail.com', 'gsconnect@andyholmes.github.io', 'add-to-desktop@tommimon.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'add-to-steam@pupper.space', 'appindicatorsupport@rgcjonas.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'auto-accent-colour@Wartybix', 'caffeine@patapon.info', 'compiz-alike-magic-lamp-effect@hermes83.github.com', 'compiz-windows-effect@hermes83.github.com', 'CustomizeClockOnLockScreen@pratap.fastmail.fm', 'custom-osd@neuromorph', 'desktop-cube@schneegans.github.com', 'ding@rastersoft.com', 'kiwimenu@kemma', 'lock-guard@fthx', 'lockscreen-extension@pratap.fastmail.fm', 'netspeedsimplified@prateekmedia.extension', 'space-bar@luchrioh', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'user-themegnome-shell-extensions.gcampax.github.com.v59.shell-extension', 'Vitals@CoreCoding.com']
 disabled-extensions=['arcmenu@arcmenu.com', 'trayIconsReloaded@selfmade.pl']
 disable-extension-version-validation=true
 disable-user-extensions=false
@@ -69,22 +69,11 @@ window-preview-title-position='TOP'
 [org/gnome/shell/extensions/user-theme]
 name='MaterialYou'
 
-[org/gnome/shell/extensions/material-you-colors]
-accent-color='4282549748'
-arcmenu-theming=true
-enable-accent-colors=false
-enable-pywal-theming=true
-extra-command='bash ~/.config/nyarch/after_wp_change.sh &'
-resize-height=200
-resize-width=200
-scheme='Default'
-python-backend=true
-
 [org/fedorahosted/background-logo-extension]
 logo-always-visible=true
 logo-border=uint32 46
 logo-file='/etc/skel/.config/fastfetch/infinity2.png'
-logo-file-dark='/etc/skel/.config/neofetch/infinity3.png'
+logo-file-dark='/etc/skel/.config/fastfetch/infinity.png'
 logo-position='bottom-right'
 logo-opacity=uint32 137
 logo-size=10.485232067510548
