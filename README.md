@@ -1,30 +1,33 @@
 # Infinity Linux
-### version 2026.9.12
-<h2><b>Infinity Linux</b> is a lightweight Arch Linux-based distribution focused on <b>speed, flexibility, compatibility, and ease of installation.</b></h2><br />
 
-<h4>It uses:</h4>
+[![Download infinity-linux](https://img.shields.io/sourceforge/dt/infinity-linux.svg)](https://sourceforge.net/projects/infinity-linux/files/latest/download)
 
-- Arch Linux base
-- Calamares graphical installer
-- BIOS and UEFI boot support
+<h2><b>Infinity Linux</b> is a lightweight Arch Linux-based distribution based on Ezarcher, built for <b>performance, freedom, and control.</b></h2><br />
+<h3>The future is open.</h3>
+
+[![Download infinity-linux](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/infinity-linux/files/latest/download)
+
+<h4> Features: </h4>
 - KDE Plasma desktop environment
+- Calamares installer
+- NetworkManager networking
 - PipeWire audio stack
 - Flatpak support
-- ZRAM swap utilization
-- New addition - GNOME Edition
+- Plasma Vault integration
+- BIOS and UEFI boot modes
+- Large software selection included in the live environment
 
 ## Repository Layout
-- etc/            (System configuration)
-- usr/            (Wallpapers, icons, launchers, branding)
-- grub/           (GRUB bootloader configuration)
-- syslinux/       (BIOS bootloader configuration)
-- efiboot/        (UEFI bootloader configuration)
-- opt/ezrepo/     (Local package repository)
-- packages.x86_64 (Package list)
-- profiledef.sh   (ArchISO profile configuration)
-- steps.sh        (Automated build script)
-
-## Requirements
+etc/            System configuration
+usr/            Wallpapers, icons, launchers, branding
+grub/           GRUB bootloader configuration
+syslinux/       BIOS bootloader configuration
+efiboot/        UEFI bootloader configuration
+opt/ezrepo/     Local package repository
+packages.x86_64 Package list
+profiledef.sh   ArchISO profile configuration
+steps.sh        Automated build script
+Requirements
 
 ### Build host:
 
@@ -57,20 +60,28 @@ out/
 
 <b>Supported:</b>
 
-- Legacy BIOS (syslinux / grub)
-- UEFI (GRUB / systemd-boot)
+- Legacy BIOS
+- UEFI
 
 ### Desktop Environment
 
-<b>Desktop Environments ccurrently in use:</b>
+<b>Default desktop:</b>
 
 - KDE Plasma
-- GNOME
+- GNOME (quarterly release, it's best u use Plasma instead)
 
 <b>Display manager:</b>
 
-- SDDM (KDE)
-- GDM (GNOME)
+- SDDM
+- GDM (for GNOME)
+
+### Kernel
+
+<b>Infinity Linux uses:</b>
+
+- linux
+
+A specialized infinity linux kernel is coming soon.
 
 ### Verification
 
@@ -84,10 +95,11 @@ sha256sum -c SHA256SUMS
 ```
 See LICENSE file for details.
 
+<b>Send any bugs found to ripgoku831@gmail.com</b>
+
 ### Status
 
 <b>Current status:</b>
 
-**First stable release.**
-
->>>>>>> 13f8588 (Fourth Infinity Linux release)
+**Stable release.**
+>>>>>>> 2fe81a8 (Stable Infinity Linux release)
